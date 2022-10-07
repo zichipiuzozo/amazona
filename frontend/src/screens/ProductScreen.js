@@ -12,6 +12,7 @@ import { Helmet } from 'react-helmet-async'
 import LoadingBox from '../components/LoadingBox'
 import MessageBox from '../components/MessagerBox'
 import { getError } from '../utils'
+import { Store } from '../Store'
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -49,9 +50,9 @@ const ProductScreen = () => {
     fetchData()
   }, [slug])
 
-  const { state, dispatch: cxtDispatch } = useContext()
+  const { state, dispatch: cxtDispatch } = useContext(Store)
   const addToCartHandler = () => {
-    cxtDispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity: 1 } })
+    cxtDispatch({ type: 'CARD_ADD_ITEM', payload: { ...product, quantity: 1 } })
   }
 
   return loading ? (
@@ -80,7 +81,7 @@ const ProductScreen = () => {
             </ListGroup.Item>
             <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
             <ListGroup.Item>
-              Description: <p>${product.description}</p>{' '}
+              Description: <p>{product.description}</p>{' '}
             </ListGroup.Item>
           </ListGroup>
         </Col>
