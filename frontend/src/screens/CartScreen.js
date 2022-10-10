@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 import MessageBox from '../components/MessagerBox'
 import { Store } from '../Store'
 
-export default function CartScreen() {
+const CartScreen = () => {
   const { state, dispatch: ctxDispatch } = useContext(Store)
   const {
     cart: { cartItems }
@@ -36,15 +36,19 @@ export default function CartScreen() {
                         src={item.image}
                         alt={item.name}
                         className="img-fluid rounded img-thumbnail"
-                      ></img>
+                      ></img>{' '}
+                      {''}
                       <Link to={`/product/${item.slug}`}>{item.name}</Link>
                     </Col>
                     <Col md={3}>
                       <Button variant="light" disable={item.quantity === 1}>
                         <i className="fas fa-minus-circle"></i>
                       </Button>
-                      <span>{item.quantity}</span>
-                      <Button variant="light" disable={item.quantity === 1}>
+                      <span>{item.quantity}</span> {''}
+                      <Button
+                        variant="light"
+                        disable={item.quantity === item.countInStock}
+                      >
                         <i className="fas fa-plus-circle"></i>
                       </Button>
                     </Col>
@@ -52,7 +56,8 @@ export default function CartScreen() {
                     <Col md={2}>
                       <Button variant="light">
                         <i className="fas fa-trash"></i>
-                      </Button>
+                      </Button>{' '}
+                      {''}
                     </Col>
                   </Row>
                 </ListGroup.Item>
@@ -65,3 +70,5 @@ export default function CartScreen() {
     </div>
   )
 }
+
+export default CartScreen
