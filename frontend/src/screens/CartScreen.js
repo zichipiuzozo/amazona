@@ -1,8 +1,8 @@
 import { useContext } from 'react'
-import Button from 'react-bootstrap/esm/Button'
-import Col from 'react-bootstrap/esm/Col'
-import ListGroup from 'react-bootstrap/esm/ListGroupItem'
-import Row from 'react-bootstrap/esm/Row'
+import Button from 'react-bootstrap/Button'
+import Col from 'react-bootstrap/Col'
+import ListGroup from 'react-bootstrap/ListGroupItem'
+import Row from 'react-bootstrap/Row'
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import MessageBox from '../components/MessagerBox'
@@ -41,13 +41,13 @@ const CartScreen = () => {
                       <Link to={`/product/${item.slug}`}>{item.name}</Link>
                     </Col>
                     <Col md={3}>
-                      <Button variant="light" disable={item.quantity === 1}>
+                      <Button variant="light" disabled={item.quantity === 1}>
                         <i className="fas fa-minus-circle"></i>
                       </Button>
                       <span>{item.quantity}</span> {''}
                       <Button
                         variant="light"
-                        disable={item.quantity === item.countInStock}
+                        disabled={item.quantity === item.countInStock}
                       >
                         <i className="fas fa-plus-circle"></i>
                       </Button>

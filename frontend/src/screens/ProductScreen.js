@@ -28,7 +28,7 @@ const reducer = (state, action) => {
 }
 
 const ProductScreen = () => {
-  const navigate = useNavigate()
+  let navigate = useNavigate()
   const params = useParams()
   const { slug } = params
 
